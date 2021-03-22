@@ -1,13 +1,16 @@
+import { useState } from 'react'
 import { createPortal } from 'react-dom'
 
 const Alert = ({ children }) => {
+  const [container] = useState(document.querySelector('.container')) // not necessary, but best for performance
+
   const content = (
     <div className="alert alert-danger text-uppercase" role="alert">
       {children}
     </div>
   )
 
-  return createPortal(content, document.querySelector('.container'))
+  return createPortal(content, container)
 }
 
 function App() {
